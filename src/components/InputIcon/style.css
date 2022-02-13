@@ -1,0 +1,16 @@
+.input-icon-container {
+  display: flex;
+  flex-flow: row nowrap;
+
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  margin-left: 0;
+}
+
+.input-field {
+  width: 20em;
+  height: 3em;
+}
