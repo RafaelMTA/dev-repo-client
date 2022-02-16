@@ -4,7 +4,10 @@ import './style.css';
 
 const Login = () => {
     return (
-        <LoginForm />
+        <div className="login-container">
+            <LoginForm />
+        </div>
+        
     );
 }
 

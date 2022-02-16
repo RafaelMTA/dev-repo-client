@@ -1,0 +1,26 @@
+.header-container {
+  background: black;
+
+  display: flex;
+  flex-flow: row nowrap;
+
+  justify-content: space-between;
+  align-items: center;
+
+  border: 10px;
+}
+
+.header-container .header-logo {
+  color: white;
+}
+
+.header-container .header-icon {
+  width: 3em;
+  height: 3em;
+
+  color: white;
+}
+
+.header-container .header-icon:hover {
+  cursor: pointer;
+}

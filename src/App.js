@@ -1,9 +1,9 @@
-import React from 'react';
-import Login from './pages/Login/index.jsx';
+import React from 'react';import Login from './pages/Login/index.jsx';
+import AppRoutes from '../src/AppRoutes.jsx';
 
 const App = () => {
   return (
-    <Login />
+    <AppRoutes />
   );
 }
 

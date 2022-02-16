@@ -1,0 +1,13 @@
+.main-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main-container .main-body {
+  display: flex;
+  flex-direction: column nowrap;
+
+  width: 100%;
+
+  justify-content: center;
+}

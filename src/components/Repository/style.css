@@ -1,0 +1,44 @@
+.repository-body {
+  display: flex;
+  flex-flow: column nowrap;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.repository-body .repository-title {
+  margin: 10px;
+}
+
+.repository-body .repository-input-field {
+  display: flex;
+  flex-flow: row nowrap;
+
+  border-radius: 5px;
+}
+
+.repository-body .repository-input-field .repository-input-add {
+  width: 28em;
+  height: 3em;
+
+  border-radius: 5px 0px 0px 5px;
+  border: 1px solid black;
+
+  outline: 0;
+}
+
+.repository-body .repository-input-field .repository-button-add {
+  cursor: pointer;
+  width: 3em;
+  background-color: rgb(23, 161, 23);
+  opacity: 0.9;
+  border-radius: 0px 10px 10px 0px;
+  outline: 0;
+}
+
+.repository-body .repository-input-field .repository-button-add:hover {
+  opacity: 1;
+}
