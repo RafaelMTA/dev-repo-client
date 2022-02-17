@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import {AuthContext} from '../../contexts/auth';
 import InputIcon from '../../components/InputIcon/index.jsx';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
 import './style.css';
 
 const LoginForm = () => {
+    const { authenticated, user, login, logout } = useContext(AuthContext);
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
