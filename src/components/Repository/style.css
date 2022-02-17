@@ -30,15 +30,3 @@
   outline: 0;
 }
 
-.repository-body .repository-input-field .repository-button-add {
-  cursor: pointer;
-  width: 3em;
-  background-color: rgb(23, 161, 23);
-  opacity: 0.9;
-  border-radius: 0px 10px 10px 0px;
-  outline: 0;
-}
-
-.repository-body .repository-input-field .repository-button-add:hover {
-  opacity: 1;
-}

@@ -1,6 +1,6 @@
-import React from 'react';import Login from './pages/Login/index.jsx';
-import AppRoutes from '../src/AppRoutes.jsx';
-import AuthProvider from './contexts/auth.jsx';
+import React from 'react';
+import AppRoutes from '../src/AppRoutes';
+import AuthProvider from './contexts/auth';
 
 const App = () => {
   return (

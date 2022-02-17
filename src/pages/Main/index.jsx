@@ -1,28 +1,35 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom'; 
-import MainForm from '../../templates/MainForm/index.jsx';
-import {getRepositories, createRepository} from '../../services/api';
+import MainForm from '../../forms/MainForm/index';
+import {getRepositories, createRepository, deleteRepository} from '../../services/api';
+import {AuthContext} from '../../contexts/auth';
+
 import './style.css';
 
-const userId = '620431b911c9aed7383fb432';
+const userId = '620e2c99dfd753c9acdecf6d';
 
 const Main = () => {
     const [repositories, setRepositories] = useState([]);
     const [loading, setLoading] = useState(true);
     const [loadingError, setLoadingError] = useState(false);
 
-    const handleLogout = async() => {
-        console.log('Clicked Logout');
-    }
-
-    const handleDelete = async() => {
-        console.log('Clicked Delete');
-    }
+    const { logout } = useContext(AuthContext);
 
     const handleAddItem = async(url) => {
         try{
+            console.log(url);
             await createRepository(userId, url);
         }catch(error){
+            console.log(error);
+            setLoadingError(true);
+        }
+    }
+
+    const handleDeleteItem = async(id) => {
+        try{
+            await deleteRepository(id);
+        }catch(error){
+            console.log(error);
             setLoadingError(true);
         }
     }
@@ -31,7 +38,7 @@ const Main = () => {
         try{
             setLoading(true);
             const response = await getRepositories(userId);
-            console.log(response.dataa);
+            console.log(response.data);
             setRepositories(response.data);
             setLoading(false);
         }catch(error){
@@ -63,9 +70,9 @@ const Main = () => {
     return (
         <MainForm 
             repositories={repositories}  
-            onLogout={handleLogout}
-            onDelete={handleDelete}
             onAddItem={handleAddItem}
+            onDeleteItem={handleDeleteItem}
+            onLogout={logout}
         />
     );
 }

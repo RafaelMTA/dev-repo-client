@@ -1,9 +1,10 @@
-import React from 'react';
-import Header from '../../components/Header/index.jsx';
-import Repository from '../../components/Repository/index.jsx';
+import React, { useContext } from 'react';
+import Header from '../../components/Header/index';
+import Repository from '../../components/Repository/index';
+
 import './style.css';
 
-const MainForm = ({repositories, onAddItem, onDelete, onLogout}) => {
+const MainForm = ({repositories, onAddItem, onDeleteItem, onLogout}) => {
     return (
         <div className="main-container">
             <div className="main-header">
@@ -13,7 +14,7 @@ const MainForm = ({repositories, onAddItem, onDelete, onLogout}) => {
                 <Repository 
                     repositories={repositories} 
                     onAddItem={onAddItem} 
-                    onDelete={onDelete} 
+                    onDeleteItem={onDeleteItem} 
                 />
             </div>       
         </div>     

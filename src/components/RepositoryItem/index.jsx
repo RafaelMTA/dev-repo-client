@@ -16,7 +16,7 @@ const RepositoryItem = (props) => {
             </div>
             <hr />
             <div className="repository-item-actions">
-                <DeleteForeverIcon className="repository-item-icon" onClick={props.onDelete} />        
+                <DeleteForeverIcon className="repository-item-icon" onClick={props.onDeleteItem} />        
             </div>
         </div>
     );
