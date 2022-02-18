@@ -9,8 +9,8 @@ const AppRoutes = () => {
   const Private = ({children}) => {
     const {authenticated, loading} = useContext(AuthContext);
 
+    if(!authenticated) { return <Navigate to="/login" /> }
     if(loading) { return <div className="loading">Carregando...</div> }
-    if(!authenticated, loading) { return <Navigate to="/login" /> }
 
     return children;
   }
@@ -18,10 +18,10 @@ const AppRoutes = () => {
   return (
     <Router>
       <AuthProvider>
-      <Routes>      
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Private><Main /></Private>} />        
-      </Routes>
+        <Routes>      
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Private><Main /></Private>} />        
+        </Routes>
       </AuthProvider>
     </Router>
   );

@@ -45,6 +45,7 @@
   outline: 0;
 
   color: white;
+  transition: .5s;
 }
 
 .input-icon-container .input-button:hover {

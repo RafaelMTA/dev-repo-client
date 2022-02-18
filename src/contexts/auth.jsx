@@ -9,26 +9,28 @@ export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const user = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-        console.log(user);
-        // if(user && token) {
-        //     console.log(user);
-        //     setUser(JSON.parse(user));
-        // api.defaults.headers.Authorization = `Bearer ${token}`;
-        // }       
+    useEffect(() => {    
+        const userStorage = localStorage.getItem('user');
+        const tokenStorage = localStorage.getItem('token');
+
+        if(userStorage && tokenStorage) {
+            setUser(JSON.parse(userStorage));
+            api.defaults.headers.Authorization = `Bearer ${tokenStorage}`;
+        }       
         setLoading(false);
     }, []);
 
     const login = async(email, password) => {
-        const response = await createSession(email, password);
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-        localStorage.setItem('token', response.data.token);
-        api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
-        setUser(response.data.user);
-        console.log('login:' + user);
-        navigate('/');
+        try{
+            const response = await createSession(email, password);
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            localStorage.setItem('token', response.data.token);
+            api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
+            setUser(response.data.user);
+            navigate('/');
+        }catch(error){
+            alert(error.response.data.error);
+        }
     }
 
     const logout = async() => {
@@ -42,7 +44,7 @@ export const AuthProvider = ({children}) => {
     return (
         <AuthContext.Provider
             value={{
-                authenticated: !!user,
+                authenticated: !!localStorage.getItem('user'),
                 user,
                 loading, 
                 login,

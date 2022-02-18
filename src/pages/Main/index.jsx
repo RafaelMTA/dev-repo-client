@@ -6,8 +6,6 @@ import {AuthContext} from '../../contexts/auth';
 
 import './style.css';
 
-const userId = '620e2c99dfd753c9acdecf6d';
-
 const Main = () => {
     const [repositories, setRepositories] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -15,22 +13,28 @@ const Main = () => {
 
     const {user, logout} = useContext(AuthContext);
 
+    const handleSearchValue = async (query) => {
+        try{
+            await loadData(query);
+        }catch(error){
+            setLoadingError(true);
+        }
+    }
+
     const handleAddItem = async(url) => {
         try{
-            await createRepository(userId, url);
+            await createRepository(user?.id, url);
             await loadData();
         }catch(error){
-            console.log(error);
             setLoadingError(true);
         }
     }
 
     const handleDeleteItem = async(repository) => {
         try{
-            await deleteRepository(userId, repository._id);
+            await deleteRepository(user?.id, repository._id);
             await loadData();
         }catch(error){
-            console.log(error);
             setLoadingError(true);
         }
     }
@@ -39,11 +43,9 @@ const Main = () => {
         try{
             setLoading(true);
             const response = await getRepositories(user?.id, query);
-            console.log(response.data);
             setRepositories(response.data);
             setLoading(false);
         }catch(error){
-            console.log(error);
             setLoadingError(true);
         }
     }   
@@ -71,6 +73,7 @@ const Main = () => {
     return (
         <MainForm 
             repositories={repositories}  
+            onSearchValue = {handleSearchValue}
             onAddItem={handleAddItem}
             onDeleteItem={handleDeleteItem}
             onLogout={logout}

@@ -14,19 +14,17 @@ export const getRepositories = async(userId, query) => {
 
 export const createRepository = async(userId, repositoryUrl) => {
     const repositoryName = getRepositoryName(repositoryUrl);
-    console.log(repositoryName);
     const url = `/${userId}/repositories/`;
     return api.post(url, {name: repositoryName, url: repositoryUrl});
 }
 
 export const deleteRepository = async(userId, repositoryId) => {
-    console.log(repositoryId);
     const url = `/${userId}/repositories/${repositoryId}`;
     return api.delete(url);
 }
 
 export const createSession = async(email, password) => {
-    return api.post('/signin', {email, password});
+    return api.post('/signin', {email, password});  
 }
 
 const getRepositoryName = (url) => {

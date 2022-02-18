@@ -3,22 +3,21 @@ import InputIcon from '../../components/InputIcon/index';
 import SearchIcon from '@material-ui/icons/Search';
 import AddIcon from '@material-ui/icons/Add';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import ClearIcon from '@material-ui/icons/Clear';
-
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import RepositoryItem from '../RepositoryItem/index';
 
 import './style.css';
 
-const Repository = ({repositories, onAddItem, onDeleteItem}) => {
+const Repository = ({repositories, onSearchValue, onAddItem, onDeleteItem}) => {
     const [searchValue, setSearchValue] = useState('');
     const [addItem, setAddItem] = useState('');
 
-    const handleClearInput = () => {
-        setSearchValue('');
+    const handleSearchValue = (query) => {
+        onSearchValue(query);
     }
 
-    const handleAddItem = () => {
-        onAddItem(addItem);
+    const handleAddItem = (item) => {
+        onAddItem(item);
         setAddItem('');
     }
 
@@ -31,9 +30,9 @@ const Repository = ({repositories, onAddItem, onDeleteItem}) => {
                     icon={<SearchIcon />}
                     value={searchValue}
                     onChange={e => setSearchValue(e.target.value)}
-                    buttonIcon={<ClearIcon />}
-                    bgBtnColor="linear-gradient(to top right, #ff0000 27%, #ff3300 78%)"
-                    onClick={handleClearInput}
+                    buttonIcon={<ArrowForwardIcon />}
+                    bgBtnColor="linear-gradient(to top right, #0066cc 24%, #0099ff 90%)"
+                    onClick={() => handleSearchValue(searchValue)}
                 />
             </div>
             <div className="repository-body">
@@ -43,13 +42,13 @@ const Repository = ({repositories, onAddItem, onDeleteItem}) => {
                 <div className="repository-input-field">
                      <InputIcon 
                         placeholder="Add a Repository..." 
-                        type="search"
+                        type="text"
                         icon={<GitHubIcon />}
                         value={addItem}
                         onChange={e => setAddItem(e.target.value)}
                         buttonIcon={<AddIcon />}
                         bgBtnColor="linear-gradient(to top right, #33cc33 33%, #00ff00 88%)"
-                        onClick={handleAddItem}
+                        onClick={() => handleAddItem(addItem)}
                     />
                 </div>   
                 <div className="repository-content">
