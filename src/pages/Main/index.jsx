@@ -13,21 +13,22 @@ const Main = () => {
     const [loading, setLoading] = useState(true);
     const [loadingError, setLoadingError] = useState(false);
 
-    const { logout } = useContext(AuthContext);
+    const {user, logout} = useContext(AuthContext);
 
     const handleAddItem = async(url) => {
         try{
-            console.log(url);
             await createRepository(userId, url);
+            await loadData();
         }catch(error){
             console.log(error);
             setLoadingError(true);
         }
     }
 
-    const handleDeleteItem = async(id) => {
+    const handleDeleteItem = async(repository) => {
         try{
-            await deleteRepository(id);
+            await deleteRepository(userId, repository._id);
+            await loadData();
         }catch(error){
             console.log(error);
             setLoadingError(true);
@@ -37,7 +38,7 @@ const Main = () => {
     const loadData = async(query = '') => {
         try{
             setLoading(true);
-            const response = await getRepositories(userId);
+            const response = await getRepositories(user?.id, query);
             console.log(response.data);
             setRepositories(response.data);
             setLoading(false);

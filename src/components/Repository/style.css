@@ -30,3 +30,6 @@
   outline: 0;
 }
 
+.repository-content .repository-list{
+  list-style: none;
+}

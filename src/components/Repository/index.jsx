@@ -13,8 +13,13 @@ const Repository = ({repositories, onAddItem, onDeleteItem}) => {
     const [searchValue, setSearchValue] = useState('');
     const [addItem, setAddItem] = useState('');
 
-    const handleClearInput =() => {
+    const handleClearInput = () => {
         setSearchValue('');
+    }
+
+    const handleAddItem = () => {
+        onAddItem(addItem);
+        setAddItem('');
     }
 
     return (
@@ -44,21 +49,21 @@ const Repository = ({repositories, onAddItem, onDeleteItem}) => {
                         onChange={e => setAddItem(e.target.value)}
                         buttonIcon={<AddIcon />}
                         bgBtnColor="linear-gradient(to top right, #33cc33 33%, #00ff00 88%)"
-                        onClick={() => { onAddItem(addItem) }}
+                        onClick={handleAddItem}
                     />
                 </div>   
                 <div className="repository-content">
-                    <ul className="repository-list">
+                    <ul className="repository-list">                      
                         {
-                            // repositories.map((repository) => {
-                            //     <li className="repository-item" key={repository._id}>
-                            //         <RepositoryItem 
-                            //             title={repository.name.substring(0, repository.name.indexOf('/'))} 
-                            //             description={repository.name.substring(repository.name.indexOf('/') + 1)} 
-                            //             onDeleteItem={onDeleteItem}
-                            //         />
-                            //     </li>
-                            // })                       
+                            repositories.map((repository) => (
+                                <li className="repository-item" key={repository._id}>
+                                    <RepositoryItem 
+                                        title={repository.name.substring(0, repository.name.indexOf('/'))} 
+                                        description={repository.name.substring(repository.name.indexOf('/') + 1)} 
+                                        onDeleteItem={() => onDeleteItem(repository)}
+                                    />
+                                </li>
+                            ))                       
                         }
                     </ul>
                 </div>                          
