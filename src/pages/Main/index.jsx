@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom'; 
-import MainForm from '../../forms/MainForm/index';
+import MainForm from '../../forms/MainForm';
 import {getRepositories, createRepository, deleteRepository} from '../../services/api';
 import {AuthContext} from '../../contexts/auth';
 

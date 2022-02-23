@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {AuthContext} from '../../contexts/auth';
-import LoginForm from '../../forms/LoginForm/index';
+import LoginForm from '../../forms/LoginForm';
 import './style.css';
 
 const Login = () => {   

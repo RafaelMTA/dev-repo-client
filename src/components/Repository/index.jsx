@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import InputIcon from '../../components/InputIcon/index';
+import InputIcon from '../../components/InputIcon';
 import SearchIcon from '@material-ui/icons/Search';
 import AddIcon from '@material-ui/icons/Add';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import RepositoryItem from '../RepositoryItem/index';
+import RepositoryItem from '../RepositoryItem';
 
 import './style.css';
 

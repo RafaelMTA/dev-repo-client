@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import InputIcon from '../../components/InputIcon/index';
+import InputIcon from '../../components/InputIcon';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
 import './style.css';
